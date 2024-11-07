@@ -1,41 +1,70 @@
+import java.util.Scanner;
+
 public class TestOperation {
     public static void main(String[]args){
-        try{
+
+        Scanner scanner = new Scanner(System.in);
+        String choixUser;
+
+        System.out.println("-- Calculatrice Simple en JAVA --");
+        System.out.println("Choisissez une opération :\n");
+        System.out.println("\t1- Addition / 2- Soustraction / 3- Multiplication / 4- Division\n");
+        System.out.println("FIN pour arrêter le programme\n\n");
+
+        while (true) {
+            System.out.println("Votre choix d'opération: ");
+            choixUser = scanner.nextLine();
+
+            if((choixUser.toLowerCase()).equals("fin")){
+                System.out.println("Merci d'avoir testé");
+                break;
+            }
+
+            if (!choixUser.matches("[1-4]")){
+                System.out.println("Veuillez entrer un numéro entre 1 et 4.");
+                continue;
+            }
+
+            System.out.println("Entrez la première valeure: ");
+            double choix1 = scanner.nextDouble();
+            System.out.println("Entrez la deuxième valeure: (Attention pas de 0 si division)");
+            double choix2 = scanner.nextDouble();
+            scanner.nextLine();
+
+            Expression exp1 = new Nombre(choix1);
+            Expression exp2 = new Nombre(choix2);
+            Expression calcul = null;
+
+            if(choixUser.equals("1")){
+                calcul = new Addition(exp1, exp2);
+                System.out.println(calcul + " = " + calcul.valeur() + "\n");
+            }
+
+            else if(choixUser.equals("2")){
+                calcul = new Soustraction(exp1, exp2);
+                System.out.println(calcul + " = " + calcul.valeur() + "\n");
+            }
             
-            // PARTIE 1 - SAE 201
+            else if(choixUser.equals("3")){
+                calcul = new Multiplication(exp1, exp2);
+                System.out.println(calcul + " = " + calcul.valeur() + "\n");
+            }
+
+            else if (choixUser.equals("4")){
+                try{
+                    calcul = new Division(exp1, exp2);
+                    System.out.println(calcul + " = " + calcul.valeur() + "\n");
+                }
+                catch (ArithmeticException err1){
+                    System.out.println("Vous avez diviser par 0\n\nChoisissez une opération à nouveau\n");
+                }   
+            }
+
             
-            Nombre six = new Nombre(6);
-            Nombre dix = new Nombre(10);
-            Nombre cinq = new Nombre(5);
-            Nombre zero = new Nombre();
-    
-            Operation s = new Soustraction(dix,six);
-            Operation m = new Multiplication(six, dix);
-            Operation d = new Division(dix, cinq);
-            //Operation d2 = new Division(dix, zero); Mis en commentaire pour permettre la construction des prochains objets (ligne catch par l'ArithmeticException)
-    
-            System.out.println(s + " = " + s.valeur());    
-            System.out.println(m + " = " + m.valeur());    
-            System.out.println(d + " = " + d.valeur());    
-            //System.out.println(d2 + " = " + d2.valeur());
-            // PARTIE 2 - SAE 201
-            Expression deux = new Nombre(2);
-            Expression trois = new Nombre(3);
-            Expression dixSept = new Nombre(17);
-            Expression sous = new Soustraction(dixSept,deux);
-            Expression add = new Addition(deux,trois);
-            Expression div = new Division(sous,add);
-            Expression mul = new Multiplication(sous,add);
-            Expression add2 = new Addition(mul,deux);
-            Expression sous2 = new Soustraction(add2,dixSept);
-            
-            System.out.println(div + " = " + div.valeur());
-            System.out.println(mul + " = " + mul.valeur());
-            System.out.println(add2 + " = " + add2.valeur());
-            System.out.println(sous2 + " = " + sous2.valeur());
+
         }
-        catch (ArithmeticException e){
-            System.out.println("Tentative de division par 0, opération impossible");
-        }
+
+        scanner.close();
+
     }
 }
