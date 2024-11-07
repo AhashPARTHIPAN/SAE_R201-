@@ -12,4 +12,4 @@ Ce projet est une mise en situation professionnelle dont l'objectif est de faire
 
 Installer ces fichiers et **mettez les dans le même répertoire**.
 
-Pour tester la calculatrice, il faut lancer le fichier **TestOperation.java**, vous devrez choisir une opération parmis les 4 proposées (addition ,soustraction, multiplication, division (<sub>ou FIN/fin pour arrêter le programme</sub>)) puis vous devrez saisir les valeurs. Le programme va renvoyer le résultat et vous pourrez continuer à utiliser la calculatrice jusqu'à ce que vous écriviez "**FIN/fin**" pour arrêter le programme.
+Pour tester la calculatrice, il faut lancer le fichier **TestOperation.java**, vous devrez choisir une opération parmis les 4 proposées (addition ,soustraction, multiplication, division (<em>ou FIN/fin pour arrêter le programme</em>)) puis vous devrez saisir les valeurs. Le programme va renvoyer le résultat et vous pourrez continuer à utiliser la calculatrice jusqu'à ce que vous écriviez "**FIN/fin**" pour arrêter le programme.
